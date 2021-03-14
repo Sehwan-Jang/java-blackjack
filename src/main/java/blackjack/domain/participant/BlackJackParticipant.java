@@ -2,7 +2,7 @@ package blackjack.domain.participant;
 
 import blackjack.domain.Hand;
 import blackjack.domain.card.Card;
-import blackjack.domain.state.NotStarted;
+import blackjack.domain.state.InitState;
 import blackjack.domain.state.State;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public abstract class BlackJackParticipant {
     public BlackJackParticipant(String name) {
         this.hand = new Hand(new ArrayList<>());
         this.name = new Name(name);
-        this.state = new NotStarted();
+        this.state = new InitState();
     }
 
     abstract public void draw(Card card);

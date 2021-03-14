@@ -6,7 +6,7 @@ import blackjack.domain.card.Shape;
 import blackjack.domain.participant.Dealer;
 import blackjack.domain.participant.Player;
 import blackjack.domain.state.Hit;
-import blackjack.domain.state.NotStarted;
+import blackjack.domain.state.InitState;
 import blackjack.domain.state.finished.BlackJackState;
 import blackjack.domain.state.finished.Bust;
 import blackjack.domain.state.finished.Stay;
@@ -70,7 +70,7 @@ public class PlayerTest {
     @DisplayName("상태 변화 기능")
     void updateState() {
         Player aaron = new Player("aaron", "0");
-        assertThat(aaron.getState()).isInstanceOf(NotStarted.class);
+        assertThat(aaron.getState()).isInstanceOf(InitState.class);
         assertThat(TestSetUp.createBlackJackPlayer().getState()).isInstanceOf(BlackJackState.class);
 
         aaron = TestSetUp.createTiePlayer();

@@ -5,7 +5,7 @@ import blackjack.domain.participant.Dealer;
 import blackjack.domain.state.finished.BlackJackState;
 import blackjack.util.GameInitializer;
 
-public class NotStarted implements State {
+public class InitState implements State {
     @Override
     public State stay() {
         throw new IllegalStateException();

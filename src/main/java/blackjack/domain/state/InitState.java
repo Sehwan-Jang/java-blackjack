@@ -8,7 +8,7 @@ import blackjack.util.GameInitializer;
 public class InitState implements State {
     @Override
     public State stay() {
-        throw new IllegalStateException();
+        throw new IllegalStateException("Stay를 결정할 수 없는 상태입니다.");
     }
 
     @Override

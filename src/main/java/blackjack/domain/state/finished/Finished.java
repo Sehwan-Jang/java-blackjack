@@ -4,19 +4,18 @@ import blackjack.domain.Hand;
 import blackjack.domain.participant.Dealer;
 import blackjack.domain.state.State;
 
-import java.util.Arrays;
 import java.util.function.Function;
 
 public abstract class Finished implements State {
 
     @Override
     public State update(Hand hand) {
-        throw new IllegalStateException();
+        throw new IllegalStateException("이미 진행이 끝난 상태입니다.");
     }
 
     @Override
     public State stay() {
-        throw new IllegalStateException();
+        throw new IllegalStateException("이미 진행이 끝난 상태입니다.");
     }
 
     @Override
@@ -30,13 +29,6 @@ public abstract class Finished implements State {
     }
 
     abstract ResultType getResultType(Dealer dealer, int score);
-
-    public ResultType getResultTypeByDifference(int difference) {
-        return Arrays.stream(ResultType.values())
-                .filter(resultType -> resultType.matcher.apply(difference))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("불가능한 결과입니다."));
-    }
 
     enum ResultType {
         BLACKJACK((difference) -> difference > 0, 1.5),
@@ -54,6 +46,10 @@ public abstract class Finished implements State {
 
         public double getProfitRate() {
             return profitRate;
+        }
+
+        public boolean match(int difference) {
+            return matcher.apply(difference);
         }
     }
 }
